@@ -1,0 +1,48 @@
+[
+    {
+        "name" : "Lydiah",
+        "age"  : 20,
+        "height" : 160
+
+    },
+
+    {
+        "name" : "John",
+        "age"  : 21,
+        "height" : 170
+
+    }
+
+    {
+        "name" : "Julie",
+        "age"  : 22,
+        "height" : 161
+
+    }
+]
+
+// <script>
+//    let students = `[
+//     {
+//         "name" : "Lydiah",
+//         "age"  : 20,
+//         "height" : 160
+
+//     },
+
+//     {
+//         "name" : "John",
+//         "age"  : 21,
+//         "height" : 170
+
+//     },
+
+//     {
+//         "name" : "Julie",
+//         "age"  : 22,
+//         "height" : 161
+
+//     }
+// ]`
+// console.log(JSON.parse(students)[2].name)
+//    </script>
