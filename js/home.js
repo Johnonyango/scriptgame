@@ -221,7 +221,10 @@ function randomCard() {
     let randomIndex = Math.floor(Math.random() * 13 );
     return blackjackGame['cards'][randomIndex];
 }
-function blackjackDeal() {  
+function blackjackDeal() {
+    if (blackjackGame['turnsOver'] === true) {
+    
+    blackjackGame['isStand'] = false
     let yourImages = document.querySelector('#your-box').querySelectorAll('img');
     let dealerImages = document.querySelector('#dealer-box').querySelectorAll('img');
  
@@ -246,9 +249,8 @@ function blackjackDeal() {
     document.querySelector('#blackjack-result').textContent = `Let's play`
     document.querySelector('#blackjack-result').style.color = `black`
 
-
-
-
+    blackjackGame['turnsOver'] = true;
+    };
 };
 function updateScore(card, activePlayer) {
     if (card === 'A'){
@@ -306,22 +308,24 @@ function computeWinner() {
 }
 let message, messageColor; 
 function showMessage() {
-    if (winner === YOU) {
-        document.querySelector('#wins').textContent = blackjackGame['wins']
-        message = 'You won!'
-        messageColor = 'green'
-        winSound.play();
-    } else if (winner === DEALER) {
-        document.querySelector('#losses').textContent = blackjackGame['losses']
-        message = 'You lost!'
-        messageColor ='red'
-        lossSound.play();
-    } else {
-        document.querySelector('#draws').textContent = blackjackGame['draws']
-        message = 'You drew!'
-        messageColor = 'yellow'
+    if (blackjackGame['turnsOver'] === true) {
+        if (winner === YOU) {
+            document.querySelector('#wins').textContent = blackjackGame['wins']
+            message = 'You won!'
+            messageColor = 'green'
+            winSound.play();
+        } else if (winner === DEALER) {
+            document.querySelector('#losses').textContent = blackjackGame['losses']
+            message = 'You lost!'
+            messageColor ='red'
+            lossSound.play();
+        } else {
+            document.querySelector('#draws').textContent = blackjackGame['draws']
+            message = 'You drew!'
+            messageColor = 'yellow'
+        }
+        document.querySelector('#blackjack-result').textContent = message
+        document.querySelector('#blackjack-result').style.color = messageColor
     }
-    document.querySelector('#blackjack-result').textContent = message
-    document.querySelector('#blackjack-result').style.color = messageColor
-}
+};
 //  no values
