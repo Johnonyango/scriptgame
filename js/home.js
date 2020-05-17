@@ -164,7 +164,9 @@ let blackjackGame = {
 'wins':0,
 'draws':0,
 'losses':0,
-}
+'isStand':false,
+'turnsOver':false,
+};
 
 const YOU = blackjackGame['you']
 const DEALER = blackjackGame['dealer']
@@ -183,14 +185,17 @@ document.querySelector('#blackjack-deal').addEventListener('click', blackjackDea
 
 
 function blackjackHit() {
+    if (blackjackGame['isStand'] === false) {
     let card = randomCard();
     console.log(card);
     showCard(card, YOU);
     updateScore(card, YOU);
     // showScore(YOU);
     console.log(YOU['score'])
+    }
 };
 function secondplayer() {
+    blackjackGame['isStand'] = true;
     let card = randomCard();
     console.log(card);
     showCard(card, DEALER);
@@ -198,6 +203,7 @@ function secondplayer() {
     // showScore(DEALER);
 
     if (DEALER['score'] > 15) {
+        blackjackGame['turnsOver'] = true;
         let winner = computeWinner();
         showMessage(winner);
     }
@@ -265,6 +271,7 @@ function showScore(activePlayer) {
 };
 
 // Decide Winner Logic
+// Also updates wins, draws and losses table
 let winner;
 function computeWinner() {
     if (YOU['score'] <= 21) {
