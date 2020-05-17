@@ -206,6 +206,7 @@ function secondplayer() {
         blackjackGame['turnsOver'] = true;
         let winner = computeWinner();
         showMessage(winner);
+        console.log(blackjackGame['turnsOver'])
     }
 };
 function showCard(card, activePlayer) {
