@@ -317,12 +317,12 @@ function showMessage() {
             document.querySelector('#wins').textContent = blackjackGame['wins']
             message = 'You won!'
             messageColor = 'green'
-            winSound.play();
+            // winSound.play();
         } else if (winner === DEALER) {
             document.querySelector('#losses').textContent = blackjackGame['losses']
             message = 'You lost!'
             messageColor ='red'
-            lossSound.play();
+            // lossSound.play();
         } else {
             document.querySelector('#draws').textContent = blackjackGame['draws']
             message = 'You drew!'
