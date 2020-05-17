@@ -194,20 +194,24 @@ function blackjackHit() {
     console.log(YOU['score'])
     }
 };
-function secondplayer() {
+function sleep(ms) {
+    return new Promise(resolve => setTimeout(resolve, ms));
+}
+async function secondplayer() {
     blackjackGame['isStand'] = true;
+
+    while (DEALER['score'] < 16 && blackjackGame['isStand'] === true) {
     let card = randomCard();
     console.log(card);
     showCard(card, DEALER);
     updateScore(card, DEALER);
     // showScore(DEALER);
-
-    if (DEALER['score'] > 15) {
-        blackjackGame['turnsOver'] = true;
-        let winner = computeWinner();
-        showMessage(winner);
-        console.log(blackjackGame['turnsOver'])
+    await sleep(1000)
     }
+    blackjackGame['turnsOver'] = true;
+    let winner = computeWinner();
+    showMessage(winner);
+    console.log(blackjackGame['turnsOver'])
 };
 function showCard(card, activePlayer) {
     if (activePlayer['score'] <= 21) {
