@@ -15,6 +15,7 @@ switch (2) {
 // Challenge 1
 function ageInDays() {
     var birthYear= prompt('When were you born?');
+    // if (typeof birthYear != NaN) {
     var yourYears = (2020 - birthYear);
     let result = (yourYears * 365)
     let h1 = document.createElement('h1');
@@ -22,6 +23,9 @@ function ageInDays() {
     h1.setAttribute('id', 'ageInDays');
     h1.appendChild(textAnswer);
     document.getElementById('flex-box-result').appendChild(h1)
+    // }  else if (birthYear = NaN) {
+    //   alert('Not valid')
+    // }
 };
 
 function reset () {
